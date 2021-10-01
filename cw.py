@@ -1,41 +1,53 @@
-noofstd=int(input("Enter the no. of student:- "))
-list1=[]
-for i in range(noofstd):
-    marks=int(input("Enter marks of student no."+str(i+1)+" :- "))
-    list1.append(marks)
-print("\n -----------MENU----------")
-print("1)Maximum no.of marks scored.")
-print("2)Minimum no.of marks scored.")
-print("3)Average marks scored by student.")
-print("4)Sum of marks scored by student.")
-print("5)exit")
-b=1000
-for i in range(b):
-    option=int(input("Select the no. of option:-"))
-    if option==2:
-     Min=list1[0]
-     for x in range(len(list1)):
-        if Min>list1[x]:
-            Min=list1[x]
-     print("Minmum value scored is "+str(Min))
-    if option==1:
-     Max=list1[0]
-     for x in range(len(list1)):
-        if Max<list1[x]:
-            Max=list1[x]
-     print("Maximum value scored is "+str(Max))
-    if option==3:
-     Sum=0
-     count=len(list1)
-     for x in range(len(list1)):
-        Sum=Sum+list1[x]
-     avg=Sum/count
-     print("Average marks scored by student:-"+str(avg))
-    if option==4:
-     Sum=0
-     for x in range(len(list1)):
-        Sum=Sum+list1[x]
-     print("Sum of marks scored by student:-"+str(Sum))
-    if option==5:
-        break
-
+print("-*-*-*-*-*-Welcome To Star bank-*-*-*-*-*-")
+name=input("Please Enter Your Name:- ")
+print("Welcome Mr.\\Ms. ",name,"you can now intiate your transaction here....")
+print("your initial balance is 0")
+print("For your transaction to be registered you must use COMMAND like:- \n1) D amount in no.\n2) W amount in no. \n *space is compulsory between D/W & amount")
+bal=0
+com=""
+n=1
+noot=0;
+while True:
+    if n==1:
+        com=input("Enter Command:- ")
+    if n==2:
+        com=input("Enter correct Command:- ")
+    tran=com.split()
+    if tran[0]=='E' or tran[0]=='e':
+        print("Total No. of Transactions Are",noot)
+        print("current balance",bal)
+        break;
+    if tran[0]=='D' or tran[0]=='d' or tran[0]=='W' or tran[0]=='w':
+        if len(tran)==1:
+            print("Please enter amount")
+        else:
+            inp=int(tran[1])
+            if inp>bal: 
+                if tran[0]=="w" or tran[0]=="W":
+                    print("can't withdraw your account has insufficient balance")
+                    n=1
+                else :
+                    if tran[0]=="w" or tran[0]=="W":
+                       bal=bal-inp
+                       print("current balance",bal)
+                       noot=noot+1
+                       n=1
+                    else :
+                       bal=bal+inp
+                       print("current balance",bal)
+                       noot=noot+1
+                       n=1
+            else:
+                    if tran[0]=="w" or tran[0]=="W":
+                       bal=bal-inp
+                       print("current balance",bal)
+                       noot=noot+1
+                       n=1
+                    else :
+                       bal=bal+inp
+                       print("current balance",bal)
+                       noot=noot+1
+                       n=1
+    else:
+        n=2
+    
